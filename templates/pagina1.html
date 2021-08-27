@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo - {{titulo}}</title>
+</head>
+<body>
+    Olá, {{nome}}!
+    {% if mostrar %}
+    <h1>Eu apareço quando é verdadeiro!</h1>
+    {% else %}
+    <h1>Eu apareço quando é falso!</h1>
+    {% endif %}
+    {% for x in range(1,11) %}
+    {{x}}<br>
+    {% endfor %}
+
+    {% raw %}
+    <ul>
+    {% for item in seq %}
+        <li>{{ item }}</li>
+    {% endfor %}
+    </ul>
+{% endraw %}
+</body>
+</html>
