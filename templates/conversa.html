@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block titulo %}Conversa{% endblock %}
+{% block conteudo %}
+<h1>Conversa com {{usuario.nick}}</h1>
+<a href="/conversas/{{conversa.dest}}">Voltar para lista de conversas</a>
+<hr>
+<form action="/falar/{{conversa.id}}" method="post">
+    <label for="nome">Seu nome:</label>
+    <input type="text" name="nome" id="nome"><br>
+    <label for="mensagem">Sua mensagem:</label>
+    <textarea name="mensagem" id="mensagem" cols="30" rows="10"></textarea><br>
+    <input type="submit" value="Enviar">
+</form>
+<hr>
+<h1>Conversas</h1>
+{% for mensagem in conversa.msgs %}
+<b>{{mensagem.rem}}:</b> {{mensagem.msg}}<br>
+{% endfor %}
+{% endblock %}

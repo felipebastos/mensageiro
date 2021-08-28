@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site - {% block titulo %}{% endblock %}</title>
+    <title>Mensageiro - {% block titulo %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="{{url_for('static', filename='estilo.css')}}">
 </head>
 <body>
-    <ul>
-        <li>Arroz</li>
-        <li>Feijão</li>
-        <li>Macarrão</li>
-    </ul>
-    {% block conteudo %}
-    <h1>Valor padrão</h1>
-    {% endblock %}
+    <div class="flex-container">
+        <div><img class="logo" src="{{url_for('static', filename='logo.png')}}" alt=""></div>
+        <div><a class="logo-link" href="/">Home</a></div>
+    </div>
+    {% block conteudo %}{% endblock %}
 </body>
 </html>
