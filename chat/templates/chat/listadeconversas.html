@@ -3,7 +3,7 @@
 {% block conteudo %}
 <h1>Conversas com {{usuario.nick}}</h1>
 <hr>
-<form action="/crianovaconversa" method="post">
+<form action="{{url_for('chat.crianovaconversa')}}" method="post">
     <input type="hidden" name="dest" value="{{usuario.id}}">
     <input type="text" name="rem" placeholder="seu nome"><br>
     <input type="text" name="primeira" placeholder="primeira mensagem"><br>
@@ -16,7 +16,7 @@
         {% for conversa in conversas %}
         <tr>
             <td>
-                <a href="/conversa/{{conversa.id}}">Conversa iniciada por {{conversa.msgs[0].rem}}</a>
+                <a href="{{url_for('chat.conversa', id=conversa.id)}}">Conversa iniciada por {{conversa.msgs[0].rem}}</a>
             </td>
         </tr>
         {% endfor %}

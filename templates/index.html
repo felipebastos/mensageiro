@@ -4,7 +4,7 @@
 <h1>Mensageiro</h1>
 <p>Bem vindo ao melhor mensageiro produzido nos últimos dez minutos.</p>
 <hr>
-<form action="/crianovodest" method="post">
+<form action="{{url_for('chat.crianovousuario')}}" method="post">
     <input type="text" name="novo" placeholder="nick para novo usuário">
     <input type="submit" value="Criar">
 </form>
@@ -30,7 +30,7 @@
         {% for usuario in usuarios %}
         <tr>
             <td>{{usuario.nick}}</td>
-            <td><a href="/conversas/{{usuario.id}}">Conversas com {{usuario.nick}}</a></td>
+            <td><a href="{{url_for('chat.lista_conversas', id=usuario.id)}}">Conversas com {{usuario.nick}}</a></td>
         </tr>
         {% endfor %}
     </tbody>
