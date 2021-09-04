@@ -5,8 +5,7 @@ from dotenv import load_dotenv
 
 from sobre import sobre
 from chat import chat
-
-from entities import usuarios
+import views
 
 load_dotenv()
 
@@ -17,8 +16,6 @@ def create_app():
     app.register_blueprint(sobre.bp)
     app.register_blueprint(chat.bp)
 
-    @app.get('/')
-    def raiz():
-        return render_template('index.html', usuarios=usuarios)
+    app.add_url_rule('/', view_func=views.raiz)
 
     return app
