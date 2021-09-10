@@ -13,7 +13,7 @@
 </form>
 <hr>
 <h1>Conversas</h1>
-{% for mensagem in conversa.msgs %}
+{% for mensagem in conversa.mensagens %}
 <b>{{mensagem.rem}}:</b> {{mensagem.msg}}<br>
 {% endfor %}
 {% endblock %}

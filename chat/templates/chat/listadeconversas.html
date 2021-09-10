@@ -14,11 +14,13 @@
 <table>
     <tbody>
         {% for conversa in conversas %}
+        {% for mensagem in conversa.mensagens %}
         <tr>
             <td>
-                <a href="{{url_for('chat.conversa', id=conversa.id)}}">Conversa iniciada por {{conversa.msgs[0].rem}}</a>
+                <a href="{{url_for('chat.conversa', id=conversa.id)}}">Conversa iniciada por {{mensagem.rem}}</a>
             </td>
         </tr>
+        {% endfor %}
         {% endfor %}
     </tbody>
 </table>
