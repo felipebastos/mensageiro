@@ -4,6 +4,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_login import LoginManager
+from flask_bcrypt import Bcrypt
 
 from dotenv import load_dotenv
 
@@ -21,6 +22,7 @@ metadata = MetaData(naming_convention=convention)
 db = SQLAlchemy(metadata=metadata)
 migrate = Migrate()
 login_manager = LoginManager()
+bcrypt = Bcrypt()
 
 
 def create_app():
@@ -32,8 +34,12 @@ def create_app():
     db.init_app(app)
     migrate.init_app(app, db, render_as_batch=True)
     login_manager.init_app(app)
+    bcrypt.init_app(app)
 
     with app.app_context():
-        pass
+        from auth import auth
+        app.register_blueprint(auth.bp)
+        from users import user
+        app.register_blueprint(user.bp)
 
     return app
