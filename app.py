@@ -3,6 +3,8 @@ from sqlalchemy import MetaData
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_login import LoginManager
+
 from dotenv import load_dotenv
 
 
@@ -18,6 +20,8 @@ convention = {
 metadata = MetaData(naming_convention=convention)
 db = SQLAlchemy(metadata=metadata)
 migrate = Migrate()
+login_manager = LoginManager()
+
 
 def create_app():
     app = Flask(__name__)
@@ -25,17 +29,11 @@ def create_app():
     app.config['SQLALCHEMY_DATABASE_URI'] = os.environ['SQLALCHEMY_DATABASE_URI']
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    
-
     db.init_app(app)
     migrate.init_app(app, db, render_as_batch=True)
+    login_manager.init_app(app)
 
     with app.app_context():
-        from sobre import sobre
-        app.register_blueprint(sobre.bp)
-        from chat import chat
-        app.register_blueprint(chat.bp)
-        import views
-        app.add_url_rule('/', view_func=views.raiz)
+        pass
 
     return app
